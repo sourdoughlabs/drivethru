@@ -1,0 +1,41 @@
+Order Form:
+
+<br/>
+<br/>
+
+{{ if .Flash  }}
+  {{ .Flash }}
+{{ end }}
+
+{{ if .Success }}
+  {{ .Success }}
+{{ end }}
+
+<div>
+  {{ range .Errors }}
+    <div>{{ . }}</div>
+  {{ end }}
+</div>
+
+<form action="/order" method="post">
+
+  PO Number: <input type="text" name="purchase_order_number" id="purchase_order_number" value="{{.Invoice.Note}}"/><br/>
+  Company Name: <input type="text" name="company" id="company" value="{{.Invoice.ClientName}}"/><br/>
+  Name: <input type="text" name="name" name="name"  value="{{.Invoice.ClientContact}}"/><br/>
+  Email: <input type="text" name="email" name="email"  value="{{.Invoice.ClientEmail}}"/><br/>
+  Street <input type="text" name="street" name="street"  value="{{.Invoice.ClientStreet}}"/><br/>
+  City: <input type="text" name="city" name="city"  value="{{.Invoice.ClientCity}}"/><br/>
+  State/Province: <input type="text" name="state" id="state"  value="{{.Invoice.ClientProvince}}"/><br/>
+  Zip/Postal Code: <input type="text" name="zip_code" id="zip_code"  value="{{.Invoice.ClientPostal}}"/><br/>
+
+  {{ $invoice := .Invoice }}
+
+  {{ range .Products }}
+    <input type="checkbox" name="product" value="{{.Code}}" {{$invoice.Checked .Code }} /> {{ .Description }}<br>
+  {{ end }}
+
+  <button type="submit">Create Order</button>
+
+</form>
+
+<a href="/">Home</a>
