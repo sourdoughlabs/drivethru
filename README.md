@@ -5,7 +5,7 @@ Drivethru is a stupid simple order taking app.  Written in #golang.  It serves a
 
 ### Products.json
 
-To keep the order form simple products are referenced by a Product Code. The products 'db' are stored in products.json
+To keep the order form simple products are referenced by a Product Code. The products 'db' are stored in products.json  Product prices are in Pennies.
 
 ### Contributing
 
