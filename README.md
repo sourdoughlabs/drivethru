@@ -1,7 +1,7 @@
 
-### Introduciton
+### Introduction
 
-Drivethru is a stupid simple order taking app.  Written in #golang.  It serves a static site out of site/ (a bare-bones set of samples is there to get you started.  It takes orders from an order form and writes invoices out to invoices/.  The invoices are stored as json files.  There are compatible with ( https://github.com/vhodges/mkinvoice ).
+Drivethru is a stupid simple order taking app written in #golang.  It serves a static site out of site/ (a bare-bones set of samples is there to get you started.  It takes orders from an order form and writes invoices out to invoices/.  The invoices are stored as json files.  There are compatible with ( https://github.com/vhodges/mkinvoice ).
 
 ### Products.json
 
