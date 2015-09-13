@@ -33,11 +33,7 @@ func main() {
 	// Authorization code endpoint
 	http.HandleFunc("/order", func(w http.ResponseWriter, r *http.Request) {
 
-		var valid bool
-
 		w.Header().Set("Content-Type", "text/html")
-
-		r.ParseForm()
 
 		invoice := &Invoice{}
 		invoice.Date = time.Now()
@@ -48,7 +44,10 @@ func main() {
 
 		context := &OrderFormContext{Flash: "", Invoice: invoice, Products: products}
 
+		var valid bool
 		if r.Method == "POST"  {
+
+			r.ParseForm()
 
 			invoice.ClientName =  r.Form.Get("company")
 			invoice.ClientContact = r.Form.Get("name")
@@ -94,7 +93,6 @@ func main() {
 
 	http.ListenAndServe(":" + *port, nil)
 }
-
 
 func render_order_form(w http.ResponseWriter, context *OrderFormContext) {
 	var t = template.Must(template.New("order_form.html").ParseFiles("site/order_form.html"))
